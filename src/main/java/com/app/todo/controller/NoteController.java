@@ -41,4 +41,10 @@ public class NoteController {
         noteService.deleteNote(id);
         return "redirect:/notes";
     }
+
+    @PostMapping("/{id}/edit")
+    public String editNote(@PathVariable Long id, @RequestParam String title, @RequestParam String content) {
+        noteService.updateNote(id, title, content);
+        return "redirect:/notes";
+    }
 }

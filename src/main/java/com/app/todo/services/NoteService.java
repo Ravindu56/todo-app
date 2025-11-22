@@ -32,4 +32,12 @@ public class NoteService {
     public void deleteNote(Long id) {
         noteRepository.deleteById(id);
     }
+
+    public void updateNote(Long id, String title, String content) {
+        noteRepository.findById(id).ifPresent(note -> {
+            note.setTitle(title);
+            note.setContent(content);
+            noteRepository.save(note);
+        });
+    }
 }
