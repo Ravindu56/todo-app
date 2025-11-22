@@ -8,21 +8,18 @@ import jakarta.persistence.Column;
 import lombok.Data;
 import java.time.LocalDateTime;
 
-@Entity // Create as table
-@Data // Getter and Setter generation
-public class Task {
+@Entity
+@Data
+public class Note {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     private String title;
-    private String description;
-    private boolean completed;
 
-    @Column(name = "assigned_at")
-    private LocalDateTime assignedAt;
+    @Column(columnDefinition = "TEXT")
+    private String content;
 
-    @Column(name = "deadline_at")
-    private LocalDateTime deadlineAt;
+    private LocalDateTime createdAt;
 }
